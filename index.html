@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Message</title>
+<script>
+// Function to send a POST request
+function sendMessage() {
+    // URL to send the POST request to
+    var url = 'https://example.com/receive-message';
+
+    // Data to send
+    var data = {
+        message: 'Hello! This is a sample message.'
+    };
+
+    // Options for the fetch request
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        
+    };
+    console.log("posted");
+    // Sending the POST request
+    fetch(url, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Message sent successfully:', data);
+        })
+        .catch(error => {
+            console.error('There was a problem sending the message:', error);
+        });
+}
+</script>
+</head>
+<body>
+
+
+</body>
+</html>
